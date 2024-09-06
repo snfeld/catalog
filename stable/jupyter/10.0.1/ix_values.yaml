@@ -1,0 +1,73 @@
+image:
+  repository: quay.io/jupyter/base-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:9973993cdbd6ad3f46da257bf31ba68d6809408b3b5418ba23c0125052d92297
+minimalImage:
+  repository: quay.io/jupyter/minimal-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:06fe61e16e9aa9728d092e75fe31c54eb6fb9031b0663ae89ede734c7844c5ce
+rImage:
+  repository: quay.io/jupyter/r-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:050b0a96a97a7480e0e5f0122a16155626ef1d7f1b2bd80cb4009d5fb4ad10b2
+scipyImage:
+  repository: quay.io/jupyter/scipy-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:bd6dec01e4e6fcfc5cc453861d548d5307d38b5bcedcaff14000761f88e7a058
+tensorflowImage:
+  repository: quay.io/jupyter/tensorflow-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:2a3cb2e9bc4d7216ef2ef655fc22740f316509f431cda56ebc7cef1ed8b4173c
+pytorchImage:
+  repository: quay.io/jupyter/pytorch-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:3a18e9a0575bd43007db70ac9708542a88bbb36ab85c96e5d0e8391c3951b12e
+datascienceImage:
+  repository: quay.io/jupyter/datascience-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:7190d206592e0773025648610ba897ee6d5720e4f170ad230dfb88554186201f
+pysparkImage:
+  repository: quay.io/jupyter/pyspark-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:90be4d36fe72c403eb0fb9b48e6eba8ace4411751bb2cea75a89fe99cd176981
+allsparkImage:
+  repository: quay.io/jupyter/all-spark-notebook
+  pullPolicy: IfNotPresent
+  tag: 2024-09-02@sha256:ce3f913dfd075de3a505801a288ca312a5feb4db264114f7468e76af3618f79e
+jupyter:
+  jupyter_cmd: lab
+  restartable: true
+service:
+  main:
+    ports:
+      main:
+        port: 10300
+        protocol: http
+        targetPort: 8888
+persistence:
+  data:
+    enabled: true
+    mountPath: /home/jovyan/work
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          imageSelector: image
+          env:
+            NB_UID: "{{ .Values.securityContext.container.PUID }}"
+            NB_GID: "{{ .Values.securityContext.pod.fsGroup }}"
+            NB_UMASK: "{{ .Values.securityContext.container.UMASK }}"
+            # User Defined
+            DOCKER_STACKS_JUPYTER_CMD: "{{ .Values.jupyter.jupyter_cmd }}"
+            RESTARTABLE: '{{ ternary "yes" "no" .Values.jupyter.restartable }}'
+updated: true
