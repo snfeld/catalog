@@ -407,7 +407,7 @@
                                                                                             "description": "Tensorflow Notebook"
                                                                                         },
                                                                                         {
-                                                                                            "value": "pyTorchImage",
+                                                                                            "value": "pytorchImage",
                                                                                             "description": "PyTorch Notebook"
                                                                                         },                                                                                        
                                                                                         {
