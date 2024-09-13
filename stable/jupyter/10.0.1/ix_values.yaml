@@ -22,6 +22,10 @@ pytorchImage:
   repository: quay.io/jupyter/pytorch-notebook
   pullPolicy: IfNotPresent
   tag: 2024-09-02@sha256:3a18e9a0575bd43007db70ac9708542a88bbb36ab85c96e5d0e8391c3951b12e
+cuda12pytorchImage:
+  repository: quay.io/jupyter/pytorch-notebook
+  pullPolicy: IfNotPresent
+  tag: cuda12-2024-09-09@sha256:ce83fbc4ea6c37bc1dad97cb952aac7740828501372e93e511fc188532ccb538
 datascienceImage:
   repository: quay.io/jupyter/datascience-notebook
   pullPolicy: IfNotPresent
