@@ -326,6 +326,8 @@ questions:
                                         description: Scipy Notebook
                                       - value: tensorflowImage
                                         description: Tensorflow Notebook
+                                      - value: cudatensorflowImage
+                                        description: Tensorflow Notebook Cuda
                                       - value: pytorchImage
                                         description: Pytorch Notebook
                                       - value: cuda12pytorchImage
