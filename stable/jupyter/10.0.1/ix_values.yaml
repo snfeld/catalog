@@ -18,10 +18,18 @@ tensorflowImage:
   repository: quay.io/jupyter/tensorflow-notebook
   pullPolicy: IfNotPresent
   tag: 2024-09-02@sha256:2a3cb2e9bc4d7216ef2ef655fc22740f316509f431cda56ebc7cef1ed8b4173c
+cudatensorflowImage:
+  repository: quay.io/jupyter/tensorflow-notebook
+  pullPolicy: IfNotPresent
+  tag: cuda-2024-09-09@sha256:3d12c203447b068291c0cea69c4a2c5543501c9e97860de0cdf066534703d123
 pytorchImage:
   repository: quay.io/jupyter/pytorch-notebook
   pullPolicy: IfNotPresent
   tag: 2024-09-02@sha256:3a18e9a0575bd43007db70ac9708542a88bbb36ab85c96e5d0e8391c3951b12e
+cuda12pytorchImage:
+  repository: quay.io/jupyter/pytorch-notebook
+  pullPolicy: IfNotPresent
+  tag: cuda12-2024-09-09@sha256:ce83fbc4ea6c37bc1dad97cb952aac7740828501372e93e511fc188532ccb538
 datascienceImage:
   repository: quay.io/jupyter/datascience-notebook
   pullPolicy: IfNotPresent
